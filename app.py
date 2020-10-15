@@ -32,30 +32,41 @@ class Rooms(db.Model):
 def init_db():
     db.drop_all()
     db.create_all()
-    
-    new_room1 = Rooms(name = "ET 220",capacity = 36)
-    new_room2 = Rooms(name = "ET 220" ,capacity = 20)
-    db.session.add(new_room1)
-    db.session.add(new_room2)
-    db.session.commit()
-    
     return redirect('/read')
+
+@app.route('/create', methods=['GET','POST'])
+def create():
+    if request.form:
+        name = request.form.get("name")
+        capacity = request.form.get("capacity")
+        new_room = Rooms(name = name, capacity = capacity)
+        db.session.add(new_room)
+        db.session.commit()
+        
+    all_rooms = Rooms.query.all()
+    return render_template("create.html", all_rooms = all_rooms, title = "Create a Room")
 
 @app.route('/read')
 def read():
     all_rooms = Rooms.query.all()
-    return render_template("read.html", all_rooms = all_rooms, title = "Read")
+    return render_template("read.html", all_rooms = all_rooms, title = "Rooms Listing")
     
 @app.route('/update/<room_id>', methods = ['GET', 'POST'])
 def update(room_id):
-    all_rooms = Rooms.query.all()
     update_room = Rooms.query.get(room_id)
-    
     if request.form:
         update_room.name = request.form.get("name")
         update_room.capacity = request.form.get("capacity")
         db.session.commit()
-    return render_template("update.html", update_room = update_room, all_rooms = all_rooms, title = "Update")
+    all_rooms = Rooms.query.all()
+    return render_template("update.html", update_room = update_room, all_rooms = all_rooms, title = "Update a room")
+
+@app.route('/delete/<room_id>') # add id
+def delete(room_id):
+    delete_room = Rooms.query.get(room_id)
+    db.session.delete(delete_room)
+    db.session.commit()
+    return redirect("/read")
 
 if __name__ == '__main__':
     app.run(debug=True)

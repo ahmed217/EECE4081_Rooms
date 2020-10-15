@@ -14,9 +14,9 @@
 	<h1 style = "color:red;text-align:center;">{{ title }}</h1>
 	
 	<form method="POST" action="/update/{{update_room.id}}">
-	<input name="name" 		type="text" 	value = {{update_room.name}}>
-	<input name="capacity" 	type="text" 	value = {{update_room.capacity}}>
-	<input 					type="submit" 	value="update">
+		<input name="name" 		type="text" 	value = {{update_room.name}}>
+		<input name="capacity" 	type="number" 	value = {{update_room.capacity}}>
+		<input 					type="submit" 	value="update">
 	</form>
 	
 	<table class="table table-borderless table-dark">
@@ -25,7 +25,6 @@
 	      <th scope="col">ID</th>
 	      <th scope="col">Name</th>
 	      <th scope="col">Capacity</th>
-	      
 	    </tr>
 	</thead>
 	<tbody>
@@ -34,8 +33,6 @@
 			<td>{{ room.id }}</td>
 			<td>{{ room.name }}</td>
 			<td>{{ room.capacity }}</td>
-			<td> 
-			</td>
 	    </tr>
 	    {% endfor %}
    </tbody>
