@@ -9,7 +9,7 @@ from flask_sqlalchemy import SQLAlchemy # create sqlite databases using python3
 app = Flask(__name__)
 
 # create a database and link it to the app
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///Rooms.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///rooms.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
@@ -17,6 +17,7 @@ db = SQLAlchemy(app)
 class Rooms(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(16), nullable = False)
+    number = db.Column(db.Integer, nullable = False)
     capacity = db.Column(db.Integer, nullable = False)
     
 #################################################################
@@ -28,35 +29,50 @@ class Rooms(db.Model):
 # Delete - will delete a single entry of a broken laptop        #
 #################################################################
 
-@app.route('/')
+@app.route('/init_db')
 def init_db():
     db.drop_all()
     db.create_all()
-    
-    # Test entries
-    new_room1 = Rooms(name = "ET 220",capacity = 36)
-    new_room2 = Rooms(name = "ET 220" ,capacity = 20)
-    db.session.add(new_room1)
-    db.session.add(new_room2)
-    db.session.commit()
-    
-    return redirect('/read')
+    return 'DB initialized'
 
-@app.route('/read')
+@app.route('/create', methods=['GET','POST'])
+def create():
+    if request.form:
+        name = request.form.get("name")
+        number = request.form.get("number")
+        capacity = request.form.get("capacity")
+        new_room = Rooms(name = name,number = number ,capacity = capacity)
+        db.session.add(new_room)
+        db.session.commit()
+        
+    all_rooms = Rooms.query.all()
+    return render_template("create.html", all_rooms = all_rooms, title = "Create a Room")
+
+@app.route('/')
 def read():
     all_rooms = Rooms.query.all()
-    return render_template("read.html", all_rooms = all_rooms, title = "Read")
+
+   
+    
+    return render_template("read.html", all_rooms = all_rooms, title = "Rooms Listing")
     
 @app.route('/update/<room_id>', methods = ['GET', 'POST'])
 def update(room_id):
-    all_rooms = Rooms.query.all()
     update_room = Rooms.query.get(room_id)
-    
     if request.form:
         update_room.name = request.form.get("name")
+        update_room.number = request.form.get("number")
         update_room.capacity = request.form.get("capacity")
         db.session.commit()
-    return render_template("update.html", update_room = update_room, all_rooms = all_rooms, title = "Update")
+    all_rooms = Rooms.query.all()
+    return render_template("update.html", update_room = update_room, all_rooms = all_rooms, title = "Update a room")
+
+@app.route('/delete/<room_id>') # add id
+def delete(room_id):
+    delete_room = Rooms.query.get(room_id)
+    db.session.delete(delete_room)
+    db.session.commit()
+    return redirect("/")
 
 if __name__ == '__main__':
     app.run(debug=True)

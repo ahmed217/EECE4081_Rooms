@@ -1,55 +1,54 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>{{ title }}</title>
-  </head>
-  <body>
-
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	
+	<title>{{ title }}</title>
+</head>
+<body>
 	<h1 style = "color:red;text-align:center;">{{ title }}</h1>
 	
 	<form method="POST" action="/update/{{update_room.id}}">
-	<input name="name" type="text" value = {{update_room.name}}>
-	<input name="capacity" type="text" value = {{update_room.capacity}}>
-	<input type="submit" value="update">
+		<input name="name" 		type="text" 	value = {{update_room.name}}>
+		<input name="number" 	type="number" 	value = {{update_room.number}}>
+		<input name="capacity" 	type="number" 	value = {{update_room.capacity}}>
+		<input 					type="submit" 	value="update">
 	</form>
 	
 	<table class="table table-borderless table-dark">
 	<thead class = "thead-light">
 	    <tr>
 	      <th scope="col">ID</th>
-	      <th scope="col">Name</th>
+		  <th scope="col">Name</th>
+		  <th scope="col">Number</th>
 	      <th scope="col">Capacity</th>
-	      
 	    </tr>
 	</thead>
 	<tbody>
-    {% for room in all_rooms %}
-    <tr>
-		<td>{{ room.id }}</td>
-		<td>{{ room.name }}</td>
-		<td>{{ room.capacity }}</td>
-		<td> 
-		</td>
-    </tr>
-    {% endfor %}
+	    {% for room in all_rooms %}
+	    <tr>
+			<td>{{ room.id }}</td>
+			<td>{{ room.name }}</td>
+			<td>{{ room.number }}</td>
+			<td>{{ room.capacity }}</td>
+	    </tr>
+	    {% endfor %}
    </tbody>
    </table>
 
-<button type = "button" class = "btn btn-dark"> <a href="/read">Home</a> </button>
+	<button type = "button" class = "btn btn-dark"> <a href="/">Home</a> </button>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>
 
 
