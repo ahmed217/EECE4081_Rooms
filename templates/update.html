@@ -15,6 +15,7 @@
 	
 	<form method="POST" action="/update/{{update_room.id}}">
 		<input name="name" 		type="text" 	value = {{update_room.name}}>
+		<input name="number" 	type="number" 	value = {{update_room.number}}>
 		<input name="capacity" 	type="number" 	value = {{update_room.capacity}}>
 		<input 					type="submit" 	value="update">
 	</form>
@@ -22,23 +23,23 @@
 	<table class="table table-borderless table-dark">
 	<thead class = "thead-light">
 	    <tr>
-	      <th scope="col">ID</th>
-	      <th scope="col">Name</th>
+		  <th scope="col">Building Name</th>
+		  <th scope="col">Room Number</th>
 	      <th scope="col">Capacity</th>
 	    </tr>
 	</thead>
 	<tbody>
 	    {% for room in all_rooms %}
 	    <tr>
-			<td>{{ room.id }}</td>
 			<td>{{ room.name }}</td>
+			<td>{{ room.number }}</td>
 			<td>{{ room.capacity }}</td>
 	    </tr>
 	    {% endfor %}
    </tbody>
    </table>
 
-	<button type = "button" class = "btn btn-dark"> <a href="/read">Home</a> </button>
+	<button type = "button" class = "btn btn-dark"> <a href="/">Home</a> </button>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
