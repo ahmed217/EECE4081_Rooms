@@ -16,6 +16,7 @@
 	
 	<form method="POST" action="/create">
 		<input name ="name" 		type="text">
+		<input name ="number" 		type="number">
 		<input name ="capacity" 	type="number">
 		<input 						type="submit" 	value="submit">
 	</form>
@@ -23,23 +24,23 @@
 	<table class="table table-borderless table-dark">
 	<thead class = "thead-light">
 		<tr>
-			<th scope="col">ID</th>
 			<th scope="col">Building Name</th>
+			<th scope="col">Room Number</th>
 			<th scope="col">Capacity</th>
 		</tr>
 	</thead>
 	<tbody>
 		{% for room in all_rooms %}
 		<tr>
-			<td>{{ room.id }}</td>
 			<td>{{ room.name }}</td>
+			<td>{{ room.number }}</td>
 			<td>{{ room.capacity }}</td>
 		</tr>
 		{% endfor %}
 	</tbody>
 	</table>
 
-	<button type = "button" class = "btn btn-dark"> <a href="/read">Home</a> </button>
+	<button type = "button" class = "btn btn-dark"> <a href="/">Home</a> </button>
 
  	<!-- Optional JavaScript -->
  	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
