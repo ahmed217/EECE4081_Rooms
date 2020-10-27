@@ -12,19 +12,19 @@
 </head>
 <body>
 
-	<h1 style = "color:red;text-align:center;">{{ title }}</h1>
+	<h1 style = "color:red;text-align:left;">{{ title }}</h1>
 	
 	<form method="POST" action="/create">
-		<input name ="name" 		type="text">
-		<input name ="number" 		type="number">
-		<input name ="capacity" 	type="number">
-		<input 						type="submit" 	value="submit">
+		<input name ="name" 		type="text"   placeholder="Building Name">
+		<input name ="number" 		type="number" placeholder="Room Number">
+		<input name ="capacity" 	type="number" placeholder="Capacity">
+		<input 						type="submit" 	value="Submit">
 	</form>
 
 	<table class="table table-borderless table-dark">
 	<thead class = "thead-light">
 		<tr>
-			<th scope="col">ID</th>
+	
 			<th scope="col">Building Name</th>
 			<th scope="col">Room Number</th>
 			<th scope="col">Capacity</th>
@@ -33,7 +33,7 @@
 	<tbody>
 		{% for room in all_rooms %}
 		<tr>
-			<td>{{ room.id }}</td>
+			
 			<td>{{ room.name }}</td>
 			<td>{{ room.number }}</td>
 			<td>{{ room.capacity }}</td>
@@ -41,8 +41,10 @@
 		{% endfor %}
 	</tbody>
 	</table>
+	
+	
 
-	<button type = "button" class = "btn btn-dark"> <a href="/">Home</a> </button>
+	<button type = "button" class = "btn btn-primary"> <a href="/" style="text-decoration : none; color : #000000;">Home</a> </button>
 
  	<!-- Optional JavaScript -->
  	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
