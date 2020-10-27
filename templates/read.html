@@ -17,7 +17,6 @@
 	<table class= "table table-dark">
 	<thead>
 		<tr>
-		<th scope="col">ID</th>
 		<th scope="col">Building Name</th>
 		<th scope="col">Room Number</th>
 		<th scope="col">Capacity</th>
@@ -27,7 +26,6 @@
     <tbody> 
 		{% for room in all_rooms %}
 		<tr>
-			<td>{{ room.id }}</td>
 			<td>{{ room.name }}</td>
 			<td>{{ room.number }}</td>
 			<td>{{ room.capacity }}</td>
@@ -42,7 +40,7 @@
 	</tbody>
 	</table>
 	<button type = "button" class = "btn btn-dark"> <a href="/create">Add a room</a> </button>
-
+	<button type = "button" class = "btn btn-dark"> <a href="/json_dump">JSON Dump</a></button>
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->

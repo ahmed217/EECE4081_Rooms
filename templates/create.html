@@ -24,7 +24,6 @@
 	<table class="table table-borderless table-dark">
 	<thead class = "thead-light">
 		<tr>
-			<th scope="col">ID</th>
 			<th scope="col">Building Name</th>
 			<th scope="col">Room Number</th>
 			<th scope="col">Capacity</th>
@@ -33,7 +32,6 @@
 	<tbody>
 		{% for room in all_rooms %}
 		<tr>
-			<td>{{ room.id }}</td>
 			<td>{{ room.name }}</td>
 			<td>{{ room.number }}</td>
 			<td>{{ room.capacity }}</td>
