@@ -4,6 +4,7 @@ from flask import render_template       # render html5 templates
 from flask import request               #
 from flask import redirect              #
 from flask_sqlalchemy import SQLAlchemy # create sqlite databases using python3
+from flask.json import jsonify
 
 # create the flask application object
 app = Flask(__name__)
@@ -20,6 +21,13 @@ class Rooms(db.Model):
     number = db.Column(db.Integer, nullable = False)
     capacity = db.Column(db.Integer, nullable = False)
     
+    def serialize(self):
+        return {
+            'id'        :   self.id,
+            'name'      :   self.name,
+            'number'    :   self.number,
+            'capacity'  :   self.capacity
+        }
 #################################################################
 # Create basic CRUD API                                         #
 #                                                               #
@@ -34,6 +42,12 @@ def init_db():
     db.drop_all()
     db.create_all()
     return 'DB initialized'
+
+@app.route('/json_dump')
+def json_dump():
+    all_rooms = Rooms.query.all()
+    json_data = jsonify( json_list = [i.serialize() for i in all_rooms] )
+    return json_data 
 
 @app.route('/create', methods=['GET','POST'])
 def create():
@@ -51,9 +65,6 @@ def create():
 @app.route('/')
 def read():
     all_rooms = Rooms.query.all()
-
-   
-    
     return render_template("read.html", all_rooms = all_rooms, title = "Rooms Listing")
     
 @app.route('/update/<room_id>', methods = ['GET', 'POST'])
