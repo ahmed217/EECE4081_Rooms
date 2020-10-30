@@ -49,6 +49,10 @@ def json_dump():
     json_data = jsonify( json_list = [i.serialize() for i in all_rooms] )
     return json_data 
 
+@app.route('/about')
+def about():
+    return render_template("aboutMe.html")
+
 @app.route('/create', methods=['GET','POST'])
 def create():
     if request.form:
