@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class = "about-section">
+<h1>About Us Page</h1>
+<p>University of Memphis Fall 2020 Semester</p>
+<p>Electrical and Computer Engineering</p>
+<p>EECE 4081 Software Engineering </p>
+</div>
+
+<h2 style ="text-align:center">Team Syntax Errors</h2>
+<div class = "row">
+
+	<!--Ashton Hill Info -->
+	<div class = "column">
+		<div class = "card">
+			<img src = "C:\Users\hilla\Documents\GitHub\EECE4081_Rooms\templates\ashton.jpg" alt = "Ashton Hill"/></img>
+			<div class = "container">
+				<h2>Ashton Hill</h2>
+				<p class ="title"> Major: Computer Engineering</p>
+				<p><a href ="https://www.linkedin.com/in/ashton-hill-cpe/">Ashton's Linkedin</a></p>
+			</div>
+		</div>
+	</div>
+	
+	<!--Nicholas Gilchrist Info -->
+	
+	<div class = "column">
+		<div class = "card">
+			<img src = "C:\Users\hilla\Documents\GitHub\EECE4081_Rooms\templates\nick.jpg" alt = "Nicholas Gilchrist"></img>
+			<div class = "container">
+				<h2>Nicholas Gilchrist</h2>
+				<p class ="title"> Major: Computer Engineering</p>
+				<p><a href ="https://www.linkedin.com/in/nicholas-gilchrist-a336ab1ba/">Nicholas's Linkedin</a></p>
+			</div>
+		</div>
+	</div>
+	
+	<!--Kevin Pham Info -->
+	
+	<div class = "column">
+		<div class = "card">
+			<img src = "C:\Users\hilla\Documents\GitHub\EECE4081_Rooms\templates\kevin.jpg" alt = "Kevin Pham"></img>
+			<div class = "container">
+				<h2>Kevin Pham</h2>
+				<p class ="title"> Major: Computer Engineering</p>
+				<p><a href ="https://www.linkedin.com/in/kevin-pham-/">Kevin's Linkedin</a></p>
+			</div>
+		</div>
+	</div>	
+</div>
+</body>
+</html>
