@@ -10,6 +10,23 @@
 	
 	<!-- Title of webpage -->
 	<title>{{ title }}</title>
+	<style>
+		.footer {
+		  position: fixed;
+		  left: 0;
+		  bottom: 0;
+		  width: 100%;
+		  border-color: white;
+		  background-color: white;
+		  color: white;
+		  text-align: center;
+			}
+			
+			
+			
+		</style>
+
+
 </head>
 <body>
 	<h1>{{ title }}</h1>
@@ -39,7 +56,19 @@
 	</table>
 	
 	<button type = "button" class = "btn btn-primary"><a href="/create" style="text-decoration : none; color : #000000;">Add a room</a> </button>
-	<button type = "button" class = "btn btn-primary"><a href="/about" style="text-decoration : none; color : #000000;">About the Authors</a> </button>
+	
+	
+	<div class="footer">
+        {% block content %}
+        <hr />
+        <footer>
+            <p><a href="/about">About the Authors</p>
+         
+          	
+        </footer>
+        {% endblock %}
+    </div>
+    
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
